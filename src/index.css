@@ -6,7 +6,6 @@
   .blue-button {
     color: #fff;
     text-align: center;
-    @apply bg-accent-400 px-4 py-[0.25rem] rounded-full
-      drop-shadow-md;
+    @apply bg-accent-400 px-4 py-[0.25rem] rounded-full drop-shadow-md active:brightness-125;
   }
 }
