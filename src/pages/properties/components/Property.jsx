@@ -13,7 +13,7 @@ function Property({ info }) {
   return (
     <div className="flex flex-col items-stretch justify-start gap-2">
       <img src={imageUrl} alt="" className={imageStyle} />
-      <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_auto] gap-2">
+      <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_auto] gap-[0.0625rem]">
         <div className="flex flex-wrap items-baseline gap-2">
           <span className="font-bold text-lg text-accent-400 leading-none">
             IDK

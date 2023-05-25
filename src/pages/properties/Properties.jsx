@@ -36,7 +36,7 @@ function Properties() {
       </section>
 
       <section>
-        <div className="flex flex-col items-stretch gap-4 p-4">
+        <div className="grid auto-rows-auto grid-cols-[1] sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
           {propertyList.length === 0
             ? generatePlaceholders(4)
             : propertyList.map((property) => <Property info={property} />)}
