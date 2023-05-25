@@ -1,12 +1,16 @@
 import { useState } from "react";
-import Login from "./pages/Login/Login";
+import Login from "./pages/login/Login";
+import Register from "./pages/Register/Register";
+import Properties from "./pages/properties/Properties";
+import Explore from "./pages/Explore/Explore";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="relative min-h-screen min-h-[100dvh] isolate">
-      <Login />
+      {/* <Login /> */}
+      <Properties />
+      {/* <Register /> */}
+      {/* <Explore /> */}
     </div>
   );
 }

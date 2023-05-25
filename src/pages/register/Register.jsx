@@ -1,27 +1,17 @@
-import React, { useState } from "react";
-import { loginUser } from "../../helpers/ApiCalls";
+import React from "react";
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
-
+function Register() {
   const inputFieldStyle =
     "border-b-2 border-primary-400/20 p-2 text-xl font-semibold";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const response = await loginUser(email, password);
-    await setEmail("");
-    await setPassword("");
-    setErrors(response.errors);
   };
   return (
     <main className="grid place-items-center h-screen py-16">
       <section>
         <h1 className="text-center text-xl font-bold text-primary-400 mb-8">
-          Log In
+          Sign Up
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -29,16 +19,28 @@ function Login() {
         >
           <input
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            placeholder="First Name"
+            className={inputFieldStyle}
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            className={inputFieldStyle}
+          />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            className={inputFieldStyle}
+          />
+          <input type="text" placeholder="Email" className={inputFieldStyle} />
+          <input
+            type="password"
+            placeholder="Password"
             className={inputFieldStyle}
           />
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Password Confirmation"
             className={inputFieldStyle}
           />
           <button type="submit" className="blue-button | text-sm px-8 my-12">
@@ -50,4 +52,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
