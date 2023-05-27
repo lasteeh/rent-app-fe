@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { signupRenter } from "../../helpers/ApiCalls";
+import { signupLandlord } from "../../helpers/ApiCalls";
 
-function RenterSignUp() {
+function LandlordSignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ function RenterSignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await signupRenter(
+    const response = await signupLandlord(
       firstName,
       lastName,
       email,
@@ -31,6 +31,7 @@ function RenterSignUp() {
     await setPassword("");
     await setPasswordConfirmation("");
     await console.log(response);
+    await console.log(errors);
     setErrors(response.errors);
   };
   return (
@@ -38,7 +39,7 @@ function RenterSignUp() {
       <section>
         <p>{errors}</p>
         <h1 className="text-center text-xl font-bold text-primary-400 mb-8">
-          Sign Up
+          Landlord Sign Up
         </h1>
         <form
           onSubmit={handleSubmit}
@@ -95,4 +96,4 @@ function RenterSignUp() {
   );
 }
 
-export default RenterSignUp;
+export default LandlordSignUp;
