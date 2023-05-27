@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { signinUser } from "../../helpers/ApiCalls";
+import { signinRenter } from "../../helpers/ApiCalls";
 
-function SignIn() {
+function RenterSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
@@ -12,7 +12,7 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await signinUser(email, password);
+    const response = await signinRenter(email, password);
     await setEmail("");
     await setPassword("");
     setErrors(response.errors);
@@ -50,4 +50,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default RenterSignIn;

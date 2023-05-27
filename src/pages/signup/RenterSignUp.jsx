@@ -1,6 +1,6 @@
 import React from "react";
 
-function SignUp() {
+function RenterSignUp() {
   const inputFieldStyle =
     "border-b-2 border-primary-400/20 p-2 text-xl font-semibold";
 
@@ -52,4 +52,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default RenterSignUp;

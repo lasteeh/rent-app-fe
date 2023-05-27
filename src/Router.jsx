@@ -1,7 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import SignIn from "./pages/signin/SignIn";
-import SignUp from "./pages/signup/SignUp";
+import Home from "./pages/outletmanager/Home";
+import RenterSignIn from "./pages/signin/RenterSignIn";
+import RenterSignUp from "./pages/signup/RenterSignUp";
+import MainPages from "./pages/outletmanager/MainPages";
 import Properties from "./pages/properties/Properties";
 import Explore from "./pages/Explore/Explore";
 
@@ -9,10 +11,13 @@ function Router() {
   return (
     <>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/properties" element={<Properties />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<RenterSignUp />} />
+        <Route path="/signin" element={<RenterSignIn />} />
+        <Route element={<MainPages />}>
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/properties" element={<Properties />} />
+        </Route>
       </Routes>
     </>
   );
