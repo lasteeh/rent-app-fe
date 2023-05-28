@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import UserContext from "./UserContext";
+import { UserContext } from "./UserContext";
 
 function CurrentUserProvider({ children }) {
-  const [user, setUser] = useState({
-    type: "",
-    id: "",
-    email: "",
-    token: "",
-  });
+  const [user, setUser] = useState(null);
+  const [authToken, setAuthToken] = useState(null);
   return (
-    <UserContext.Provider value={[user, setUser]}>
+    <UserContext.Provider value={{ authToken, setAuthToken, user, setUser }}>
       {children}
     </UserContext.Provider>
   );

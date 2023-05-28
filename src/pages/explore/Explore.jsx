@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Explore() {
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
   const inputFieldStyle = "border-b-2 border-primary-400/20 p-2 font-semibold";
 
   const handleSubmit = async (e) => {
@@ -18,11 +20,19 @@ function Explore() {
           onSubmit={handleSubmit}
           className="flex flex-col gap-4 items-center"
         >
-          <input type="text" className={inputFieldStyle} placeholder="City" />
+          <input
+            type="text"
+            className={inputFieldStyle}
+            placeholder="City"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
           <input
             type="text"
             className={inputFieldStyle}
             placeholder="Province"
+            value={province}
+            onChange={(e) => setProvince(e.target.value)}
           />
           <button
             type="submit"

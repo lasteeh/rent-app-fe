@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { signinLandlord } from "../../helpers/ApiCalls";
+import { useCurrentUser } from "../../context/useCurrentUser";
+import { setLocalUser } from "../../helpers/StorageFunction";
 
 function LandlordSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const { setUser, authToken, setAuthToken } = useCurrentUser();
+  const navigate = useNavigate();
 
   const inputFieldStyle =
     "border-b-2 border-primary-400/20 p-2 text-xl font-semibold";
@@ -15,8 +20,22 @@ function LandlordSignIn() {
     const response = await signinLandlord(email, password);
     await setEmail("");
     await setPassword("");
-    setErrors(response.errors);
+    if (response.errors) {
+      setErrors(response.errors);
+    } else {
+      setUser(response.landlord);
+      setAuthToken(response.landlord.token);
+
+      // Store the logged-in user in the local storage
+      setLocalUser(response.landlord.token);
+
+      setEmail("");
+      setPassword("");
+
+      navigate("/explore");
+    }
   };
+
   return (
     <main className="grid place-items-center h-screen py-16">
       <section>

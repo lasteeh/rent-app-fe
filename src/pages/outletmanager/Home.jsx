@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getLocalUser } from "../../helpers/StorageFunction";
 
 function Home() {
-  return (
-    <div>
-      <h1>home</h1>
-    </div>
-  );
+  const navigate = useNavigate();
+  useEffect(() => {
+    const currentUser = getLocalUser();
+
+    if (currentUser === null) {
+      navigate("/signin");
+    } else {
+      navigate("/properties");
+    }
+  }, []);
+  return <></>;
 }
 
 export default Home;
