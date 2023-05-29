@@ -75,3 +75,13 @@ export const signupLandlord = async (
     }),
   }).then((data) => data.json());
 };
+
+export const fetchProperties = async (token) => {
+  return fetch(`${baseApiUrl}/api/v1/properties`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

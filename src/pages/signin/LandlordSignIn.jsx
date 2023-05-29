@@ -32,7 +32,7 @@ function LandlordSignIn() {
       setEmail("");
       setPassword("");
 
-      navigate("/explore");
+      navigate("/properties");
     }
   };
 

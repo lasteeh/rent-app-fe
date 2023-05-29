@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Property from "./components/Property";
 import PlaceholderProperty from "./components/PlaceholderProperty";
+import { fetchProperties } from "../../helpers/ApiCalls";
+import { useCurrentUser } from "../../context/useCurrentUser";
 import { SAMPLE_PROPERTIES } from "../../assets/sampledata";
 
 function Properties() {
+  const { authToken } = useCurrentUser();
   const [propertyList, setPropertyList] = useState([]);
 
   useEffect(() => {
+    console.log(authToken);
     setPropertyList(SAMPLE_PROPERTIES);
+    console.log(fetchProperties(authToken));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -37,9 +42,10 @@ function Properties() {
 
       <section>
         <div className="grid auto-rows-auto grid-cols-[1] sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
-          {propertyList.length === 0
-            ? generatePlaceholders(4)
-            : propertyList.map((property) => <Property info={property} />)}
+          {propertyList &&
+            propertyList.map((property, index) => (
+              <Property info={property} key={index} />
+            ))}
         </div>
       </section>
     </main>
@@ -47,9 +53,3 @@ function Properties() {
 }
 
 export default Properties;
-
-const generatePlaceholders = (numPlaceholders) => {
-  return Array.from({ length: numPlaceholders }, (_, i) => (
-    <PlaceholderProperty key={i} />
-  ));
-};
