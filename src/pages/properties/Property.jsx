@@ -10,25 +10,32 @@ function Property() {
   const [isLoading, setIsLoading] = useState(true);
   const [property, setProperty] = useState(null);
 
-  const imageUrl = defaultImage;
-  const imageStyle = `mask-image | object-cover w-full max-h-[380px] shadow-md rounded-t-xl my-4 ${"grayscale"}`;
+  const imageUrl =
+    property && property.image_url ? property.image_url : defaultImage;
+  const imageStyle = `mask-image | object-cover w-full max-h-[380px] shadow-md rounded-t-xl my-4 ${
+    property && property.image_url ? null : "grayscale"
+  }`;
 
   useEffect(() => {
-    const setProperty = async () => {
+    const setSingleProperty = async () => {
       const fetchedProperty = await fetchSingleProperty(authToken, id);
       if (fetchedProperty.errors) {
-        return console.log(fetchedProperty, "AHSJDKHASJKHDJK");
+        return console.log(fetchedProperty);
       }
       if (fetchedProperty) {
         setProperty(fetchedProperty.property);
         setIsLoading(false);
+        console.log(property);
       }
     };
     if (authToken) {
-      setProperty();
-      console.log(property);
+      setSingleProperty();
     }
   }, [authToken]);
+
+  useEffect(() => {
+    console.log(property);
+  }, [property]);
   return (
     <main className="px-8">
       <section className="relative py-8 isolate">
@@ -40,7 +47,11 @@ function Property() {
             &#8249;
           </NavLink>
         </div>
-        <img src={imageUrl} className={imageStyle} />
+        {isLoading ? (
+          <div className={`placeholder-bg | h-screen ${imageStyle}`}></div>
+        ) : (
+          <img src={imageUrl} className={imageStyle} />
+        )}
         <div className="flex flex-wrap justify-between items-center gap-4">
           <span className="purple-button | text-xs">AVAILABLE</span>
           <p className="text-primary-400">

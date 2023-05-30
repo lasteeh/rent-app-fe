@@ -17,6 +17,7 @@ function Properties() {
       if (properties.properties) {
         setPropertyList(properties.properties);
         setIsLoading(false);
+        console.log(properties);
       }
     };
     if (authToken) {

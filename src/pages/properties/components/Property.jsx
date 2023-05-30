@@ -8,7 +8,7 @@ function Property({ property }) {
 
   const imageUrl = image_url ? image_url : defaultRoom;
   const imageStyle = `object-cover h-48 shadow-md rounded-xl ${
-    image_url ? nil : "grayscale"
+    image_url ? null : "grayscale"
   }`;
 
   return (

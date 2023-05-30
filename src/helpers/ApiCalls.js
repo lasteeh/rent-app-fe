@@ -120,7 +120,7 @@ export const fetchNewProperty = async (
 
 export const fetchSingleProperty = async (token, propertyID) => {
   return fetch(`${baseApiUrl}/api/v1/properties/${propertyID}`, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
