@@ -1,17 +1,21 @@
 import React from "react";
 import defaultRoom from "../../../assets/images/defaultroom.jpg";
+import { NavLink } from "react-router-dom";
 
-function Property({ info }) {
+function Property({ property }) {
   const { name, description, image_url, address, city, province, zip_code } =
-    info;
+    property;
 
   const imageUrl = image_url ? image_url : defaultRoom;
-  const imageStyle = `object-cover h-40 shadow-md rounded-xl ${
+  const imageStyle = `object-cover h-48 shadow-md rounded-xl ${
     image_url ? nil : "grayscale"
   }`;
 
   return (
-    <div className="flex flex-col items-stretch justify-start gap-2">
+    <NavLink
+      className="flex flex-col items-stretch justify-start gap-2"
+      to={`/property/${property.id}`}
+    >
       <img src={imageUrl} alt="" className={imageStyle} />
       <div className="grid grid-cols-[1fr_auto] grid-rows-[auto_auto] gap-[0.0625rem]">
         <div className="flex flex-wrap items-baseline gap-2">
@@ -27,7 +31,7 @@ function Property({ info }) {
         </p>
         <p className="text-lg text-primary-400 capitalize font-bold">{name}</p>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

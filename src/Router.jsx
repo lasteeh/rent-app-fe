@@ -8,6 +8,8 @@ import Properties from "./pages/properties/Properties";
 import Explore from "./pages/Explore/Explore";
 import LandlordSignIn from "./pages/signin/LandlordSignIn";
 import LandlordSignUp from "./pages/signup/LandlordSignUp";
+import NewProperty from "./pages/properties/NewProperty";
+import Property from "./pages/properties/Property";
 
 function Router() {
   return (
@@ -24,6 +26,8 @@ function Router() {
           <Route element={<MainPages />}>
             <Route path="/explore" element={<Explore />} />
             <Route path="/properties" element={<Properties />} />
+            <Route path="/property/new" element={<NewProperty />} />
+            <Route path="/property/:id" element={<Property />} />
           </Route>
         </Routes>
       </BrowserRouter>

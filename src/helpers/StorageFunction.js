@@ -1,7 +1,17 @@
-export const setLocalUser = (userToken, userType = "renter") => {
+export const setLocalUser = (
+  userToken,
+  userID,
+  userEmail,
+  userType = "renter"
+) => {
   sessionStorage.setItem(
     "user",
-    JSON.stringify({ token: userToken, type: userType })
+    JSON.stringify({
+      token: userToken,
+      type: userType,
+      email: userEmail,
+      id: userID,
+    })
   );
 };
 
@@ -12,6 +22,8 @@ export const getLocalUser = () => {
     return {
       token: userData.token,
       type: userData.type,
+      email: userData.email,
+      id: userData.id,
     };
   } else return null;
 };

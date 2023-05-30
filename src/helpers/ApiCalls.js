@@ -83,5 +83,47 @@ export const fetchProperties = async (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  });
+  }).then((data) => data.json());
+};
+
+export const fetchNewProperty = async (
+  token,
+  propertyName,
+  propertyDescription,
+  propertyAddress,
+  propertyCity,
+  propertyProvince,
+  propertyZipCode,
+  propertyUnits,
+  landlordID
+) => {
+  return fetch(`${baseApiUrl}/api/v1/properties`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      property: {
+        name: propertyName,
+        description: propertyDescription,
+        address: propertyAddress,
+        city: propertyCity,
+        province: propertyProvince,
+        zip_code: propertyZipCode,
+        units: propertyUnits,
+        landlord_id: landlordID,
+      },
+    }),
+  }).then((data) => data.json());
+};
+
+export const fetchSingleProperty = async (token, propertyID) => {
+  return fetch(`${baseApiUrl}/api/v1/properties/${propertyID}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((data) => data.json());
 };

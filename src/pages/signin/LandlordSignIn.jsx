@@ -27,7 +27,12 @@ function LandlordSignIn() {
       setAuthToken(response.landlord.token);
 
       // Store the logged-in user in the local storage
-      setLocalUser(response.landlord.token);
+      setLocalUser(
+        response.landlord.token,
+        response.landlord.id,
+        response.landlord.email,
+        "landlord"
+      );
 
       setEmail("");
       setPassword("");

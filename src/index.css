@@ -35,6 +35,11 @@ img {
     animation: slideBG 1.25s infinite ease-in-out;
     @apply bg-neutral-200;
   }
+
+  .mask-image {
+    mask-image: linear-gradient(transparent 10%, hsl(0, 0%, 0%, 1) 30%);
+    -webkit-mask-image: linear-gradient(transparent 10%, hsl(0, 0%, 0%, 1) 30%);
+  }
 }
 
 @keyframes slideBG {
