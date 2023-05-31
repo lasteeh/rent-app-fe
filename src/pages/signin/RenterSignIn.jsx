@@ -43,7 +43,7 @@ function RenterSignin() {
   return (
     <main className="grid place-items-center h-screen py-4">
       <section className="w-full flex justify-end px-12">
-        <NavLink to="/landlord/signup" className="purple-button | text-right">
+        <NavLink to="/signup" className="purple-button | text-right">
           Sign Up
         </NavLink>
       </section>

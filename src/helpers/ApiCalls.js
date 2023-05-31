@@ -129,3 +129,74 @@ export const fetchSingleProperty = async (token, propertyID) => {
     },
   }).then((data) => data.json());
 };
+
+export const fetchEditProperty = async (
+  token,
+  propertyName,
+  propertyDescription,
+  propertyAddress,
+  propertyCity,
+  propertyProvince,
+  propertyZipCode,
+  propertyUnits,
+  propertyRentPerMonth,
+  landlordID,
+  propertyID
+) => {
+  return fetch(`${baseApiUrl}/api/v1/properties/${propertyID}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      property: {
+        name: propertyName,
+        description: propertyDescription,
+        address: propertyAddress,
+        city: propertyCity,
+        province: propertyProvince,
+        zip_code: propertyZipCode,
+        units: propertyUnits,
+        rent_per_month: propertyRentPerMonth,
+        landlord_id: landlordID,
+      },
+    }),
+  }).then((data) => data.json());
+};
+
+export const fetchDeleteProperty = async (token, propertyID) => {
+  return fetch(`${baseApiUrl}/api/v1/properties/${propertyID}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((data) => data.json());
+};
+
+export const fetchNewRental = async (
+  token,
+  propertyID,
+  renterID,
+  rentPerMonth,
+  startDate,
+  durationMonths
+) => {
+  return fetch(`${baseApiUrl}/api/v1/rentals`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      rental: {
+        property_id: propertyID,
+        renter_id: renterID,
+        rent_per_month: rentPerMonth,
+        start_date: startDate,
+        duration_months: parseFloat(durationMonths),
+      },
+    }),
+  }).then((data) => data.json());
+};

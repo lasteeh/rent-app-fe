@@ -40,6 +40,10 @@ img {
     mask-image: linear-gradient(transparent 10%, hsl(0, 0%, 0%, 1) 30%);
     -webkit-mask-image: linear-gradient(transparent 10%, hsl(0, 0%, 0%, 1) 30%);
   }
+
+  .map-container * canvas {
+    width: 100%;
+  }
 }
 
 @keyframes slideBG {

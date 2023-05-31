@@ -10,6 +10,9 @@ import LandlordSignIn from "./pages/signin/LandlordSignIn";
 import LandlordSignUp from "./pages/signup/LandlordSignUp";
 import NewProperty from "./pages/properties/NewProperty";
 import Property from "./pages/properties/Property";
+import EditProperty from "./pages/properties/EditProperty";
+import NewRental from "./pages/rentals/NewRental";
+import Rentals from "./pages/rentals/Rentals";
 
 function Router() {
   return (
@@ -27,7 +30,10 @@ function Router() {
             <Route path="/explore" element={<Explore />} />
             <Route path="/properties" element={<Properties />} />
             <Route path="/property/new" element={<NewProperty />} />
+            <Route path="/property/edit/:id" element={<EditProperty />} />
             <Route path="/property/:id" element={<Property />} />
+            <Route path="/rental/new/:id" element={<NewRental />} />
+            <Route path="/rentals" element={<Rentals />} />
           </Route>
         </Routes>
       </BrowserRouter>
