@@ -31,9 +31,9 @@ function MainPages() {
     <>
       <Outlet />
       {isMainMenuShowing && (
-        <div className="absolute z-[3] bottom-[5rem] left-[1rem] w-max shadow-md">
+        <div className="fixed z-[3] bottom-[5rem] left-[1rem] w-max shadow-md">
           <button
-            className="px-4 py-2 hover:bg-neutral-100"
+            className="px-4 py-2 bg-white hover:bg-neutral-100"
             onClick={handleLogOut}
           >
             Log Out
@@ -42,7 +42,7 @@ function MainPages() {
       )}
       <button
         type="button"
-        className="absolute top-[calc(100%_-_4rem)] right-[calc(100%_-_3rem)] z-[2] rounded-full shadow-md text-xl px-2 grid place-items-center"
+        className="fixed top-[calc(100%_-_4rem)] right-[calc(100%_-_3rem)] z-[2] rounded-full shadow-md text-xl px-2 py-[0.25rem] grid place-items-center bg-white"
         onClick={handleClick}
       >
         <span>&#9776;</span>

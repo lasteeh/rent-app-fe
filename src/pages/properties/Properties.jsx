@@ -76,7 +76,7 @@ function Properties() {
 
       {showForLandlord ? (
         <NavLink
-          className="blue-button | text-3xl absolute top-[calc(100vh_-_5rem)] left-[calc(100vw_-_5rem)]"
+          className="blue-button | text-3xl fixed top-[calc(100vh_-_5rem)] left-[calc(100vw_-_5rem)]"
           to="/property/new"
         >
           +

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../context/useCurrentUser";
 import { fetchNewProperty } from "../../helpers/ApiCalls";
 import { useNavigate } from "react-router-dom";
+import MapBox from "./components/MapBox";
 
 function NewProperty() {
   const navigate = useNavigate();
@@ -127,6 +128,13 @@ function NewProperty() {
             Submit
           </button>
         </form>
+      </section>
+      <section>
+        <div className="p-8">
+          <MapBox
+            currentAddress={`${propertyAddress}, ${propertyCity}, ${propertyProvince} ${propertyZipCode}`}
+          />
+        </div>
       </section>
     </main>
   );
