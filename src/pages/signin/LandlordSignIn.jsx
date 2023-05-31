@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signinLandlord } from "../../helpers/ApiCalls";
 import { useCurrentUser } from "../../context/useCurrentUser";
 import { setLocalUser } from "../../helpers/StorageFunction";
@@ -18,11 +18,11 @@ function LandlordSignIn() {
     e.preventDefault();
 
     const response = await signinLandlord(email, password);
-    await setEmail("");
-    await setPassword("");
     if (response.errors) {
       setErrors(response.errors);
     } else {
+      setEmail("");
+      setPassword("");
       setUser(response.landlord);
       setAuthToken(response.landlord.token);
 
@@ -42,7 +42,12 @@ function LandlordSignIn() {
   };
 
   return (
-    <main className="grid place-items-center h-screen py-16">
+    <main className="grid place-items-center h-screen py-4">
+      <section className="w-full flex justify-end px-12">
+        <NavLink to="/signup" className="purple-button | text-right">
+          Sign Up
+        </NavLink>
+      </section>
       <section>
         <p>{errors}</p>
         <h1 className="text-center text-xl font-bold text-primary-400 mb-8">

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { signupRenter } from "../../helpers/ApiCalls";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function RenterSignUp() {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,17 +26,25 @@ function RenterSignUp() {
       password,
       passwordConfirmation
     );
-    await setFirstName("");
-    await setLastName("");
-    await setEmail("");
-    await setPhoneNumber("");
-    await setPassword("");
-    await setPasswordConfirmation("");
-    await console.log(response);
-    setErrors(response.errors);
+    if (response.errors) {
+      setErrors(response.errors);
+    } else {
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhoneNumber("");
+      setPassword("");
+      setPasswordConfirmation("");
+      navigate("/signin");
+    }
   };
   return (
-    <main className="grid place-items-center h-screen py-16">
+    <main className="grid place-items-center h-screen py-4">
+      <section className="w-full flex justify-end px-12">
+        <NavLink to="/signin" className="purple-button | text-right">
+          Sign In
+        </NavLink>
+      </section>
       <section>
         <p>{errors}</p>
         <h1 className="text-center text-xl font-bold text-primary-400 mb-8">

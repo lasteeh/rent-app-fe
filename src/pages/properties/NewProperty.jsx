@@ -13,6 +13,7 @@ function NewProperty() {
   const [propertyProvince, setPropertyProvince] = useState("");
   const [propertyZipCode, setPropertyZipCode] = useState("");
   const [propertyUnits, setPropertyUnits] = useState(1);
+  const [propertyRentPerMonth, setPropertyRentPerMonth] = useState("");
   const [errors, setErrors] = useState("");
   const [landlordID, setLandlordID] = useState("");
 
@@ -31,15 +32,16 @@ function NewProperty() {
       propertyProvince,
       propertyZipCode,
       propertyUnits,
+      propertyRentPerMonth,
       landlordID
     );
-    await setPropertyName("");
-    await setPropertyDescription("");
-    await setPropertyAddress("");
-    await setPropertyCity("");
-    await setPropertyProvince("");
-    await setPropertyZipCode("");
-    await setPropertyUnits("");
+    // await setPropertyName("");
+    // await setPropertyDescription("");
+    // await setPropertyAddress("");
+    // await setPropertyCity("");
+    // await setPropertyProvince("");
+    // await setPropertyZipCode("");
+    // await setPropertyUnits("");
 
     if (response.errors) {
       setErrors(response.errors);
@@ -112,6 +114,13 @@ function NewProperty() {
             value={propertyUnits}
             onChange={(e) => setPropertyUnits(e.target.value)}
             placeholder="Units"
+            className={inputFieldStyle}
+          />
+          <input
+            type="number"
+            value={propertyRentPerMonth}
+            onChange={(e) => setPropertyRentPerMonth(e.target.value)}
+            placeholder="Rent Per Month"
             className={inputFieldStyle}
           />
           <button type="submit" className="purple-button">

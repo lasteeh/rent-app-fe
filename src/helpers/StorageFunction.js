@@ -15,6 +15,10 @@ export const setLocalUser = (
   );
 };
 
+export const removeLocalUser = () => {
+  sessionStorage.removeItem("user");
+};
+
 export const getLocalUser = () => {
   const tokenString = sessionStorage.getItem("user");
   const userData = JSON.parse(tokenString);

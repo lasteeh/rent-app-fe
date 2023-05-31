@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signinRenter } from "../../helpers/ApiCalls";
+import { useCurrentUser } from "../../context/useCurrentUser";
+import { setLocalUser } from "../../helpers/StorageFunction";
 
-function RenterSignIn() {
+function RenterSignin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const { setUser, authToken, setAuthToken } = useCurrentUser();
+  const navigate = useNavigate();
 
   const inputFieldStyle =
     "border-b-2 border-primary-400/20 p-2 text-xl font-semibold";
@@ -13,13 +18,37 @@ function RenterSignIn() {
     e.preventDefault();
 
     const response = await signinRenter(email, password);
-    await setEmail("");
-    await setPassword("");
-    setErrors(response.errors);
+    if (response.errors) {
+      setErrors(response.errors);
+    } else {
+      setEmail("");
+      setPassword("");
+      setUser(response.renter);
+      setAuthToken(response.renter.token);
+
+      // Store the logged-in user in the local storage
+      setLocalUser(
+        response.renter.token,
+        response.renter.id,
+        response.renter.email
+      );
+
+      setEmail("");
+      setPassword("");
+
+      navigate("/properties");
+    }
   };
+
   return (
-    <main className="grid place-items-center h-screen py-16">
+    <main className="grid place-items-center h-screen py-4">
+      <section className="w-full flex justify-end px-12">
+        <NavLink to="/landlord/signup" className="purple-button | text-right">
+          Sign Up
+        </NavLink>
+      </section>
       <section>
+        <p>{errors}</p>
         <h1 className="text-center text-xl font-bold text-primary-400 mb-8">
           Log In
         </h1>
@@ -50,4 +79,4 @@ function RenterSignIn() {
   );
 }
 
-export default RenterSignIn;
+export default RenterSignin;

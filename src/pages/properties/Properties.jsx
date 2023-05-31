@@ -4,12 +4,13 @@ import PlaceholderProperty from "./components/PlaceholderProperty";
 import { fetchProperties } from "../../helpers/ApiCalls";
 import { useCurrentUser } from "../../context/useCurrentUser";
 import { NavLink } from "react-router-dom";
+import { getLocalUser } from "../../helpers/StorageFunction";
 
 function Properties() {
   const { authToken, user } = useCurrentUser();
   const [propertyList, setPropertyList] = useState([]);
-  const [showProperties, setShowProperties] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [showForLandlord, setShowForLandlord] = useState(false);
 
   useEffect(() => {
     const setProperties = async () => {
@@ -18,6 +19,11 @@ function Properties() {
         setPropertyList(properties.properties);
         setIsLoading(false);
         console.log(properties);
+      }
+
+      const user = await getLocalUser();
+      if (user.type === "landlord") {
+        setShowForLandlord(true);
       }
     };
     if (authToken) {
@@ -68,7 +74,7 @@ function Properties() {
         </div>
       </section>
 
-      {user && user.type === "landlord" ? (
+      {showForLandlord ? (
         <NavLink
           className="blue-button | text-3xl absolute top-[calc(100vh_-_5rem)] left-[calc(100vw_-_5rem)]"
           to="/property/new"

@@ -53,15 +53,23 @@ function Property() {
           <img src={imageUrl} className={imageStyle} />
         )}
         <div className="flex flex-wrap justify-between items-center gap-4">
-          <span className="purple-button | text-xs">AVAILABLE</span>
-          <p className="text-primary-400">
-            <span className="text-xs">PHP</span>
-            <span className="font-extrabold text-xl">2,000.00</span>
-            <span className="text-primary-400/80 text-sm align-top">
-              {" "}
-              /month
-            </span>
-          </p>
+          {isLoading ? (
+            <p className="placeholder-bg | text-transparent">placeholder</p>
+          ) : (
+            <span className="purple-button | text-xs">AVAILABLE</span>
+          )}
+          {isLoading ? (
+            <p className="placeholder-bg | text-transparent">placeholder</p>
+          ) : (
+            <p className="text-primary-400">
+              <span className="text-xs">PHP</span>
+              <span className="font-extrabold text-xl">2,000.00</span>
+              <span className="text-primary-400/80 text-sm align-top">
+                {" "}
+                /month
+              </span>
+            </p>
+          )}
         </div>
       </section>
     </main>

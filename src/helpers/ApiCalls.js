@@ -95,6 +95,7 @@ export const fetchNewProperty = async (
   propertyProvince,
   propertyZipCode,
   propertyUnits,
+  propertyRentPerMonth,
   landlordID
 ) => {
   return fetch(`${baseApiUrl}/api/v1/properties`, {
@@ -112,6 +113,7 @@ export const fetchNewProperty = async (
         province: propertyProvince,
         zip_code: propertyZipCode,
         units: propertyUnits,
+        rent_per_month: propertyRentPerMonth,
         landlord_id: landlordID,
       },
     }),
