@@ -1,4 +1,4 @@
-const months = [
+export const months = [
   "January",
   "February",
   "March",
@@ -13,10 +13,10 @@ const months = [
   "December",
 ];
 
-function monthNameFromNumber(num) {
+export const monthNameFromNumber = (num) => {
   const monthNumber = Number(num);
   return months[monthNumber - 1];
-}
+};
 
 export const getNextBillingDate = (startDate, monthlyBilling) => {
   const currentDate = new Date();
