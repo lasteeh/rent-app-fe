@@ -200,3 +200,23 @@ export const fetchNewRental = async (
     }),
   }).then((data) => data.json());
 };
+
+export const fetchRentals = async (token) => {
+  return fetch(`${baseApiUrl}/api/v1/rentals`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((data) => data.json());
+};
+
+export const fetchSingleRental = async (token, rentalID) => {
+  return fetch(`${baseApiUrl}/api/v1/rentals/${rentalID}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((data) => data.json());
+};

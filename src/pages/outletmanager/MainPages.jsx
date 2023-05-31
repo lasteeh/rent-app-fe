@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { getLocalUser, removeLocalUser } from "../../helpers/StorageFunction";
 import { useCurrentUser } from "../../context/useCurrentUser";
 
@@ -31,9 +31,21 @@ function MainPages() {
     <>
       <Outlet />
       {isMainMenuShowing && (
-        <div className="fixed z-[3] bottom-[5rem] left-[1rem] w-max shadow-md">
-          <button
+        <div className="fixed z-[3] bottom-[5rem] left-[1rem] w-max shadow-md flex flex-col gap-0 items-stretch">
+          <NavLink
+            to="/properties"
             className="px-4 py-2 bg-white hover:bg-neutral-100"
+          >
+            Properties
+          </NavLink>
+          <NavLink
+            to="/rentals"
+            className="px-4 py-2 bg-white hover:bg-neutral-100"
+          >
+            Rentals
+          </NavLink>
+          <button
+            className="px-4 py-2 bg-white hover:bg-neutral-100  text-left"
             onClick={handleLogOut}
           >
             Log Out
