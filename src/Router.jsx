@@ -17,7 +17,7 @@ import Rentals from "./pages/rentals/Rentals";
 function Router() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/rent-app-fe/dist/">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<RenterSignUp />} />
